@@ -2,7 +2,7 @@
 
 require_once 'config.php';
 
-class USER
+class User
 {
 
  private $conn;
