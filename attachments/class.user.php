@@ -2,7 +2,7 @@
 
 require_once 'config.php';
 
-class USER
+class User
 {
 
  private $conn;
@@ -31,7 +31,7 @@ class USER
   try
   {
    $password = md5($upass);
-   $stmt = $this->conn->prepare("INSERT INTO data(userName,userEmail,userPass,userPhone,tokenCode)
+   $stmt = $this->conn->prepare("INSERT INTO users(user_name,user_mail,user_pass,user_phone,token_code)
                                                 VALUES(:user_name, :user_mail, :user_pass, :user_phone, :active_code)");
    $stmt->bindparam(":user_name",$uname);
    $stmt->bindparam(":user_mail",$email);

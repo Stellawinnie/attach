@@ -2,7 +2,7 @@
 session_start();
 require_once 'class.user.php';
 
-$reg_user = new USER();
+$reg_user = new User();
 
 if($reg_user->is_logged_in()!="")
 {
@@ -18,7 +18,7 @@ if(isset($_POST['btn-signup']))
  $uphone = trim($_POST['txtphone']);
  $code = md5(uniqid(rand()));
 
- $stmt = $reg_user->runQuery("SELECT * FROM data WHERE userEmail=:email_id");
+ $stmt = $reg_user->runQuery("SELECT * FROM users WHERE user_mail=:email_id");
  $stmt->execute(array(":email_id"=>$email));
  $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -99,7 +99,7 @@ if(isset($_POST['btn-signup']))
   <body id="login">
     <div class="container">
     <?php if(isset($msg)) echo $msg;  ?>
-      <form class="form-signin" method="post">
+      <form class="form-signin" method="post" action="signup.php">
         <h2 class="form-signin-heading">Sign Up</h2><hr />
         <label>User Name.</label></br>
         <input type="text" class="input-block-level" placeholder="Username" name="txtuname" required /></br>
